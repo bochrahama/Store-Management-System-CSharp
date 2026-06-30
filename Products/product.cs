@@ -1,18 +1,14 @@
 using System.Data.Common;
 
-public enum ProductCategory
-{
-    coffe , tea , juice , MilKshake , Cack 
-}
-
-public abstract class Products
+namespace StoreManagementSystem.Products{
+public abstract class Product
 {
     public int ProductId {set; get;}
     public string Name {get; set; }
     private decimal Price ;
     private int Quantity ;
 
-    //Encapsulation with price and Quantity 
+    //Encapsulation with price and Quantity (Proper)
     public decimal Price
     {
         set
@@ -34,7 +30,7 @@ public abstract class Products
         get  {return _quantity ;}
     }
     //constructer 
-    public Products(int productId , string name , decimal price , int quantity)
+    public Product(int productId , string name , decimal price , int quantity)
     {
         if (productId <= 0)
         {
@@ -42,11 +38,14 @@ public abstract class Products
         }
         this.ProductIdv = productId ;
         this.Name = name ;
-        this.Price = Price ;
+        this.Price =price ;
         this.Quantity = quantity;
     }
 
-    public abstract void DisplayInfo();
+    public override string ToString()
+    {
+          return $"[ID:{ProductId}] - Name :{Name} - price :{Price} DA " ;
+    }
     public void ApplyDiscount(double percentage)
     {
         if(percentage<0 || percentage > 100)
@@ -62,4 +61,5 @@ public abstract class Products
            return true ;
         return false ;
     }
+}
 }
