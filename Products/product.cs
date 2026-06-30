@@ -5,8 +5,8 @@ public abstract class Product
 {
     public int ProductId {set; get;}
     public string Name {get; set; }
-    private decimal Price ;
-    private int Quantity ;
+    private decimal _price ;
+    private int _quantity ;
 
     //Encapsulation with price and Quantity (Proper)
     public decimal Price
@@ -36,7 +36,7 @@ public abstract class Product
         {
             throw new ArgumentException("the Id prducts should be greaten than 0");
         }
-        this.ProductIdv = productId ;
+        this.ProductId = productId ;
         this.Name = name ;
         this.Price =price ;
         this.Quantity = quantity;
@@ -52,7 +52,7 @@ public abstract class Product
         {
             throw new ArgumentException ("ERROR : the porsontage they should be between 0 and 100");
         }
-        decimal priceAmoint = this.Price * (decimale)(percentage/100 );
+        decimal priceAmoint = this.Price * (decimal)(percentage/100 );
         this.Price = this.Price - priceAmoint;
     }
     public bool isInStock()
