@@ -24,7 +24,7 @@ public abstract class Product
         set
         {
             if (value <0)
-                throw new ArgumentException("ERROR : the Quantity should be greaten than 0");
+                throw new ArgumentOutOfRangeException("ERROR : the Quantity should be greaten than 0");
             _quantity = value ;
         }
         get  {return _quantity ;}
@@ -34,7 +34,7 @@ public abstract class Product
     {
         if (productId <= 0)
         {
-            throw new ArgumentException("the Id prducts should be greaten than 0");
+            throw new ArgumentOutOfRangeException(nameof(productId), "The product ID must be greater than 0.");
         }
         this.ProductId = productId ;
         this.Name = name ;
@@ -49,9 +49,8 @@ public abstract class Product
     public void ApplyDiscount(double percentage)
     {
         if(percentage<0 || percentage > 100)
-        {
-            throw new ArgumentException ("ERROR : the porsontage they should be between 0 and 100");
-        }
+            throw new ArgumentOutOfRangeException(nameof(percentage), "ERROR: The percentage must be between 0 and 100.");
+        
         decimal priceAmoint = this.Price * (decimal)(percentage/100 );
         this.Price = this.Price - priceAmoint;
     }
