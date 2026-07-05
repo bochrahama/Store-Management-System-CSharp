@@ -8,8 +8,10 @@ public abstract class Product
     private decimal _price ;
     private int _quantity ;
 
-    //Encapsulation with price and Quantity (Proper)
-    public decimal Price
+    public Category ProductCategory { get; set; }
+
+        //Encapsulation with price and Quantity (Proper)
+        public decimal Price
     {
         set
         {
@@ -30,7 +32,7 @@ public abstract class Product
         get  {return _quantity ;}
     }
     //constructer 
-    public Product(int productId , string name , decimal price , int quantity)
+    public Product(int productId , string name , decimal price , int quantity , Category category)
     {
         if (productId <= 0)
         {
@@ -40,6 +42,7 @@ public abstract class Product
         this.Name = name ;
         this.Price =price ;
         this.Quantity = quantity;
+            this.ProductCategory = category;
     }
 
     public override string ToString()

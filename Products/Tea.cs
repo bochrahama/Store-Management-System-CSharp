@@ -11,8 +11,8 @@ namespace StoreManagementSystem.Products
         public bool isHerbal {set; get;}
 
         public Tea (int productId ,  TypeTea type , decimal price , int quantity,
-                    int SteepTimeMinutes , bool isHerbal)
-                    : base (productId ,type.ToString() , price , quantity )
+                    int SteepTimeMinutes , bool isHerbal , Category category)
+                    : base (productId ,type.ToString() , price , quantity , category )
         {
             this.type = type;
             this.SteepTimeMinutes = SteepTimeMinutes;

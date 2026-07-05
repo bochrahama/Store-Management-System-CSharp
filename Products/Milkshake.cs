@@ -9,8 +9,8 @@ namespace StoreManagementSystem.Products
         public MilKShake milKShake {get; set;}
         public bool HasWhippedCream {get; set;}
 
-        public MilKShake(int productId , MilkshakeType milkshakeType , decimal price , int quantity , bool HasWhippedCream)
-        :base(productId , milkshakeType.ToString() , price , quantity)
+        public MilKShake(int productId , MilkshakeType milkshakeType , decimal price , int quantity , bool HasWhippedCream , Category category)
+        :base(productId , milkshakeType.ToString() , price , quantity , category)
         {
             this.HasWhippedCream = HasWhippedCream ;
         }

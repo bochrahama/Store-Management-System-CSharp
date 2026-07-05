@@ -15,8 +15,8 @@ namespace StoreManagementSystem
         public CaKeType cakeType {get ; set; }
         public CakeSize cakeSize {get; set;}
 
-        public Cake (int productId , CaKeType caKeType , decimal price , int quantity , CakeSize cakeSize)
-        :base(productId , caKeType.ToString() , price , quantity)
+        public Cake (int productId , CaKeType caKeType , decimal price , int quantity , CakeSize cakeSize , Category category)
+        :base(productId , caKeType.ToString() , price , quantity , category)
         {
             this.cakeSize = cakeSize;
         }

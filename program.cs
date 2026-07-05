@@ -16,4 +16,7 @@ Console.WriteLine(cake);
 Juice juice = new Juice(6 , TypeJuice.MixedFruit , 23.3m ,2 ,true );
 Console.WriteLine(juice);
 
-//Completing the Juice class: variables with validations + methods.
+MilKShake milKShake = new MilKShake(8 , MilkshakeType.Caramel , 33.4m , 1, false);
+Console.WriteLine(milKShake);
+
+//Completing the Milkshake class: variables with validations + methods.

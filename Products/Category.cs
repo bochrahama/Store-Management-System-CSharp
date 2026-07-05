@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Store_Management_System_CSharp.Products
+namespace  StoreManagementSystem.Products
 {
-    internal class Class1
+   public class Category
     {
+
     }
 }

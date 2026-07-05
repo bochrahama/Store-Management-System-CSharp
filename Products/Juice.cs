@@ -11,8 +11,8 @@ namespace StoreManagementSystem.Products
         public TypeJuice typeJuice {get ; set;}
         public bool isFreshlySqueezed {get; set;}
 
-        public Juice (int productId , TypeJuice typeJuice , decimal price , int quantity , bool isFreshlySqueezed)
-        :base(productId , typeJuice.ToString() , price , quantity)
+        public Juice (int productId , TypeJuice typeJuice , decimal price , int quantity , bool isFreshlySqueezed ,Category category )
+        :base(productId , typeJuice.ToString() , price , quantity , category)
         {
             this.isFreshlySqueezed = isFreshlySqueezed ;
         }

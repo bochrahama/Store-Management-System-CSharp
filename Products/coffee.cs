@@ -23,8 +23,8 @@ namespace StoreManagementSystem.Products{
         public bool isIced {get ; set;}
 
         public Coffee (int productId ,  TypeCoffee type , decimal price , int quantity,
-                    Size size , CaffeineLevel caffeineLevel ,bool isIced )
-                    : base (productId ,type.ToString() , price , quantity )
+                    Size size , CaffeineLevel caffeineLevel ,bool isIced  , Category category)
+                    : base (productId ,type.ToString() , price , quantity , category)
         {
             this.Size = size ;
             this.CaffeineLevel = caffeineLevel ; 
