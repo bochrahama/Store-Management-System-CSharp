@@ -1,7 +1,8 @@
 using System.Data.Common;
 
 namespace StoreManagementSystem.Products{
-public abstract class Product
+
+    public abstract class Product
 {
     public int ProductId {set; get;}
     public string Name {get; set; }
@@ -42,7 +43,7 @@ public abstract class Product
         this.Name = name ;
         this.Price =price ;
         this.Quantity = quantity;
-            this.ProductCategory = category;
+        this.ProductCategory = category;
     }
 
     public override string ToString()
