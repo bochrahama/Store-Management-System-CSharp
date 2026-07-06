@@ -1,5 +1,7 @@
 
-public enum EmployeeRole
+namespace StoreManagementSystem.Employees
+{
+    public enum EmployeeRole
 {
     Manager, Cashier, Barista, Cleaner, DeliveryEmployee, Assistant
 }
@@ -20,6 +22,10 @@ public abstract class Employee
         this.HireDate = hireDate;
         this.Role = role;
     }
-    public abstract void DisplayInfo();
-    public virtual decimal CalculatePaid() { return Salary; }
+    public override string ToString()
+        {
+            return $"[ID:{EmployeeId}] - Name: {Name} - Position: {Position} - Salary: {Salary:C} - Hire Date: {HireDate.ToShortDateString()} - Role: {Role}";
+        }
+        public virtual decimal CalculatePaid() { return Salary; }
+}
 }
