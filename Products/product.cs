@@ -64,5 +64,21 @@ namespace StoreManagementSystem.Products{
            return true ;
         return false ;
     }
-}
+    public void InsertStock(int quantity)
+        {
+            if (quantity <= 0)
+                throw new ArgumentOutOfRangeException(nameof(quantity), "ERROR: The quantity must be greater than 0.");
+
+            this.Quantity += quantity;
+        }
+    
+    public void RemoveStock(int quantity)
+        {
+            if (quantity <= 0)
+                throw new ArgumentOutOfRangeException(nameof(quantity), "ERROR: The quantity must be greater than 0.");
+            if (quantity > this.Quantity)
+                throw new InvalidOperationException("ERROR: Not enough stock available to remove the specified quantity.");
+            this.Quantity -= quantity;
+        }
+    }
 }
