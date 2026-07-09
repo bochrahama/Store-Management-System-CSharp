@@ -1,18 +1,17 @@
+using StoreManagementSystem.Products;   
 public class Sale
 {
     public int SaleId { get; set; }// The unique ID of the sale
-    public int ProductId { get; set; }// The ID of the product sold in this sale
+    public List<Product> products{ get; set; }// The list of products sold in the sale
     public decimal TotalAmount { get; set; }// The total amount of the sale
-    public int QuantitySold { get; set; }// The quantity of the product sold in this sale
+    
     public DateTime SaleDate { get; set; }// The date and time when the sale was made
     int EmployeeId { get; set; } // The ID of the employee who processed the sale
-    public Sale(int saleId,int productId, decimal totalAmount, DateTime saleDate, int quantitySold , int employeeId)
+    public Sale(int saleId, DateTime saleDate,  int employeeId)
     {
         SaleId = saleId;
-        ProductId = productId;
-        TotalAmount = totalAmount;
-        SaleDate = saleDate;
-        QuantitySold = quantitySold;
+        SaleDate = DateTime.Now;
+        products = new List<Product>();
         EmployeeId = employeeId;
     }
 
@@ -20,12 +19,29 @@ public class Sale
     {
         return price * quantity;
     }
+    public void AddProduct(Product product, int quantity)
+    { 
+        if (product == null)// Check if the product is null
+            throw new ArgumentNullException(nameof(product), "ERROR: The product cannot be null.");
+        if (quantity <= 0)
+            throw new ArgumentOutOfRangeException(nameof(quantity), "ERROR: The quantity must be greater than 0.");
+        if (product.Quantity < quantity)// Check if there is enough stock for the product
+            throw new InvalidOperationException($"ERROR: Not enough stock for product {product.Name}. Available: {product.Quantity}, Requested: {quantity}.");
+
+        for (int i = 0; i < quantity; i++)
+        {
+            products.Add(product);
+        }
+
+        TotalAmount += CalculateTotalAmount(product.Price, quantity);
+        product.RemoveStock(quantity);
+    }
+    
     public override string ToString()
     {
         return $@"   Sale ID: {SaleId} ,
-    Product ID: {ProductId}, 
+    the peoducts sold: {string.Join(", ", products.Select(p => p.Name))},
     Total Amount: {TotalAmount:C},  
-    Quantity Sold: {QuantitySold}, 
     Sale Date: {SaleDate}, 
     Employee ID: {EmployeeId}";
     }
