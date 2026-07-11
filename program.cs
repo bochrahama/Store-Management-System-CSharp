@@ -27,4 +27,6 @@ Console.WriteLine(milKShake);
 
 Manager employee = new Manager(4, "John", "manager", 4000.0m, new DateTime(2024, 5, 1), EmployeeRole.Manager , "cake");
 Console.WriteLine(employee);
-//Completing the Manager  class: variables with validations + methods.
+
+
+//Completing the Sale class: This class represents a sale made in the store.

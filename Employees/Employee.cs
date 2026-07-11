@@ -13,6 +13,7 @@ public abstract class Employee
     public decimal Salary { get; set; }
     public DateTime HireDate { get; set; }
     public EmployeeRole Role { get;protected set; }
+    
     public Employee(int employeeId, string name, string position, decimal salary, DateTime hireDate, EmployeeRole role)
     {
         this.EmployeeId = employeeId;
@@ -22,6 +23,7 @@ public abstract class Employee
         this.HireDate = hireDate;
         this.Role = role;
     }
+
     public override string ToString()
         {
             return $"[ID:{EmployeeId}] - Name: {Name} - Position: {Position} - Salary: {Salary:C} - Hire Date: {HireDate.ToShortDateString()} - Role: {Role}";
