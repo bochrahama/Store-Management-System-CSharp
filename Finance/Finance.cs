@@ -3,6 +3,7 @@ public class Finance
 {
     public decimal balance { get; set; }
     public List<FinanceRecord> financeRecords { get; set; }
+    public object TotalRevenue { get; internal set; }
 
     public Finance(decimal initialBalance)
     {
