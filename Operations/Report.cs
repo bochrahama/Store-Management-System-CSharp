@@ -24,7 +24,7 @@ namespace StoreManagementSystem.Operations
 
         //method to generate report
 
-        public void GenerateDailyReport()
+        public string GenerateDailyReport()
         {
             // Logic to generate daily report
             if(StartData.Date != EndData.Date)
@@ -37,10 +37,11 @@ namespace StoreManagementSystem.Operations
                          $"Total Expenses: {TotalExpenses:C}\n" +
                          $"Total Profit: {TotalProfit:C}\n" +
                          $"Best Selling Product: {BestSellingProduct}";
+            return report;
 
-  
+
         }
-        public void GenerateWeeklyReport()
+        public string  GenerateWeeklyReport()
         {
             // Logic to generate weekly report
             if ((EndData - StartData).TotalDays != 6)
@@ -53,8 +54,9 @@ namespace StoreManagementSystem.Operations
                          $"Total Expenses: {TotalExpenses:C}\n" +
                          $"Total Profit: {TotalProfit:C}\n" +
                          $"Best Selling Product: {BestSellingProduct}";
+            return report;
         }
-        public void GenerateMonthlyReport()
+        public string  GenerateMonthlyReport()
         {
             // Logic to generate monthly report
             if (StartData.Month != EndData.Month || StartData.Year != EndData.Year)
@@ -67,7 +69,24 @@ namespace StoreManagementSystem.Operations
                          $"Total Expenses: {TotalExpenses:C}\n" +
                          $"Total Profit: {TotalProfit:C}\n" +
                          $"Best Selling Product: {BestSellingProduct}";
+            return report;
         }
+        public string GenerateYearlyReport()
+        {
+            // Logic to generate yearly report
+            if (StartData.Year != EndData.Year)
+            {
+                throw new ArgumentException("Start date and end date must be in the same year for a yearly report.");
+            }
+            TotalProfit = TotalRevenue - TotalExpenses;
+            var report = $"Yearly Report for {StartData:yyyy}\n" +
+                         $"Total Revenue: {TotalRevenue:C}\n" +
+                         $"Total Expenses: {TotalExpenses:C}\n" +
+                         $"Total Profit: {TotalProfit:C}\n" +
+                         $"Best Selling Product: {BestSellingProduct}";
+            return report;
+        }
+
 
     }
 }
